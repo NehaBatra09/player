@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { TextField, Button, MenuItem } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
 
 const roles = ['Batsman', 'All-Rounder', 'Bowler'];
 
@@ -10,10 +11,11 @@ const NewPlayerScreen = ({ history }) => {
     const [name, setName] = useState('');
     const [role, setRole] = useState('Batsman');
     const [points, setPoints] = useState(0);
-
+    const naviagte = useNavigate()
     const handleSubmit = () => {
         const newPlayer = { name, role, points, type: 'Domestic' };
         dispatch({ type: 'ADD_PLAYER', payload: newPlayer });
+        naviagte("/")
     };
 
     return (
@@ -24,7 +26,7 @@ const NewPlayerScreen = ({ history }) => {
             </div>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center", gap: "40px" }}>
                 <TextField
-                    label="Name"
+                    label="Type"
                     value={"Domestic Player"}
                 />
                 <TextField
@@ -33,6 +35,7 @@ const NewPlayerScreen = ({ history }) => {
                     onChange={(e) => setName(e.target.value)}
                 />
                 <TextField
+
                     fullWidth
                     select
                     label="Role"
@@ -46,11 +49,18 @@ const NewPlayerScreen = ({ history }) => {
                     ))}
                 </TextField>
                 <TextField
-                    type="number"
-                    label="Points"
+                    fullWidth
+                    select
+                    label="Pints"
                     value={points}
                     onChange={(e) => setPoints(e.target.value)}
-                />
+                >
+                    {[1, 2, 3, 4, 5].map((r) => (
+                        <MenuItem key={r} value={r}>
+                            {r}
+                        </MenuItem>
+                    ))}
+                </TextField>
                 <Button variant="contained" color="primary" onClick={handleSubmit}>
                     Add Player
                 </Button>
