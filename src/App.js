@@ -12,9 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path="/" element={<PlayersScreen />} />
-          <Route path="/new-player" element={<NewPlayerScreen />} />
-          <Route path="/player-selection" element={<PlayerSelectionScreen />} />
+          <Route path="/" Component={PlayerSelectionScreen} />
+          <Route path="/new-player" Component={NewPlayerScreen} />
 
         </Routes>
 

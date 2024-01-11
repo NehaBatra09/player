@@ -21,6 +21,11 @@ const reducer = (state = initialState, action) => {
                     (player) => player.id !== action.payload.id
                 ),
             };
+        case 'RESET_SELECTED_PLAYERS':
+            return {
+                ...state,
+                selectedPlayers: [],
+            };
         default:
             return state;
     }

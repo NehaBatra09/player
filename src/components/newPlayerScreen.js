@@ -14,7 +14,6 @@ const NewPlayerScreen = ({ history }) => {
     const handleSubmit = () => {
         const newPlayer = { name, role, points, type: 'Domestic' };
         dispatch({ type: 'ADD_PLAYER', payload: newPlayer });
-        history.push('/');
     };
 
     return (
@@ -24,6 +23,10 @@ const NewPlayerScreen = ({ history }) => {
                 <h2>New Player</h2>
             </div>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center", gap: "40px" }}>
+                <TextField
+                    label="Name"
+                    value={"Domestic Player"}
+                />
                 <TextField
                     label="Name"
                     value={name}
